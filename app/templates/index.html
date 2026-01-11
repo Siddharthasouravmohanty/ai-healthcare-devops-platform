@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jyotirmayee Clinic</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="header">
+    <img src="/static/jyoti.png" class="doctor-img">
+    <h1>Jyotirmayee Clinic</h1>
+    <p>AI-assisted health guidance</p>
+</div>
+
+<div class="card">
+    <form method="POST">
+        <textarea name="symptoms" placeholder="Describe your health issue..." required></textarea>
+        <button type="submit">Get Guidance</button>
+    </form>
+</div>
+
+{% if guidance %}
+<div class="result">
+    <p><b>Summary:</b> {{ guidance.summary }}</p>
+    <p><b>Medicine:</b> {{ guidance.medicine }}</p>
+    <p><b>Timing:</b> {{ guidance.timing }}</p>
+    <p class="note">{{ guidance.note }}</p>
+</div>
+{% endif %}
+
+</body>
+</html>

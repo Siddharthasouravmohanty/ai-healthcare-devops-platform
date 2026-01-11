@@ -1,0 +1,49 @@
+body {
+    background: #000;
+    font-family: Arial;
+    margin: 0;
+}
+
+.header {
+    background: linear-gradient(120deg, #ff006e, #ff1744);
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+.doctor-img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.card, .result {
+    width: 450px;
+    margin: 20px auto;
+    background: #111;
+    color: white;
+    padding: 18px;
+    border-radius: 12px;
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+}
+
+button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background: #ff1744;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.note {
+    font-size: 12px;
+    opacity: 0.8;
+}
