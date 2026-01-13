@@ -4,6 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = "siddhu7978/ai-healthcare-devops-platform"
         IMAGE_TAG  = "v1"
+        CONTAINER_NAME = "ai-healthcare-app"
     }
 
     stages {
@@ -32,6 +33,25 @@ pipeline {
                     docker push $IMAGE_NAME:$IMAGE_TAG
                     '''
                 }
+            }
+        }
+
+        stage('Deploy to EC2') {
+            steps {
+                sh '''
+                echo "Stopping old container if it exists..."
+                docker stop $CONTAINER_NAME || true
+                docker rm $CONTAINER_NAME || true
+
+                echo "Pulling latest image..."
+                docker pull $IMAGE_NAME:$IMAGE_TAG
+
+                echo "Starting new container..."
+                docker run -d \
+                  --name $CONTAINER_NAME \
+                  -p 80:5000 \
+                  $IMAGE_NAME:$IMAGE_TAG
+                '''
             }
         }
     }
