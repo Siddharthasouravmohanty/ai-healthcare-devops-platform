@@ -5,7 +5,7 @@ def get_medical_recommendation(symptoms: str):
         "fever": {
             "medicine": "Paracetamol",
             "timing": "After food",
-            "advice": "Drink more plenty of water and take rest"
+            "advice": "Drink bislary plenty of water and take rest"
         },
         "cold": {
             "medicine": "Cetirizine",
