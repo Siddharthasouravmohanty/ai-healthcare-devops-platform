@@ -21,10 +21,10 @@
 
 {% if guidance %}
 <div class="result">
-    <p><b>Summary:</b> {{ guidance.summary }}</p>
     <p><b>Medicine:</b> {{ guidance.medicine }}</p>
     <p><b>Timing:</b> {{ guidance.timing }}</p>
-    <p class="note">{{ guidance.note }}</p>
+    <p><b>Advice:</b> {{ guidance.advice }}</p>
+    <p class="note">Source: {{ guidance.source }}</p>
 </div>
 {% endif %}
 

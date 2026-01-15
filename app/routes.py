@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-from ai_service import get_ai_guidance
+from medical_rules import get_medical_recommendation
 
 web_routes = Blueprint("web_routes", __name__)
 
@@ -9,6 +9,7 @@ def index():
 
     if request.method == "POST":
         user_input = request.form.get("symptoms")
-        guidance = get_ai_guidance(user_input)
+        guidance = get_medical_recommendation(user_input)
+
 
     return render_template("index.html", guidance=guidance)
