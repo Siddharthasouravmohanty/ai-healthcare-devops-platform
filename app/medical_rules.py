@@ -3,7 +3,7 @@ def get_medical_recommendation(symptoms: str):
 
     rules = {
         "fever": {
-            "medicine": "Paracetamol",
+            "medicine": "dolo650",
             "timing": "Before  food",
             "advice": "Drink  plenty of water and take rest"
         },
