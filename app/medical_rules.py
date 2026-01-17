@@ -4,11 +4,11 @@ def get_medical_recommendation(symptoms: str):
     rules = {
         "fever": {
             "medicine": "Paracetamol",
-            "timing": "After food",
+            "timing": "Before  food",
             "advice": "Drink  plenty of water and take rest"
         },
         "cold": {
-            "medicine": "AZETHROMICINE",
+            "medicine": "cetirzine",
             "timing": "After food (preferably night)",
             "advice": "Avoid cold drinks and dust exposure"
         },
