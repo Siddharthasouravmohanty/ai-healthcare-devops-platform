@@ -21,10 +21,25 @@
 
 {% if guidance %}
 <div class="result">
-    <p><b>Medicine:</b> {{ guidance.medicine }}</p>
-    <p><b>Timing:</b> {{ guidance.timing }}</p>
-    <p><b>Advice:</b> {{ guidance.advice }}</p>
-    <p class="note">Source: {{ guidance.source }}</p>
+    <h3>{{ guidance.title }}</h3>
+
+    <p><b>Clinical Confidence Level:</b> {{ guidance.confidence }}</p>
+    <p>{{ guidance.summary }}</p>
+
+    {% for item in guidance.recommendations %}
+        <div class="card">
+            <p><b>Reported Symptom:</b> {{ item.symptom | title }}</p>
+            <p><b>Suggested Medication:</b> {{ item.medicine }}</p>
+            <p><b>Recommended Timing:</b> {{ item.timing }}</p>
+            <p><b>Care Advice:</b> {{ item.advice }}</p>
+        </div>
+    {% endfor %}
+
+    <p class="note"><b>Important Care Note:</b> {{ guidance.care_note }}</p>
+
+    <hr>
+    <p class="note"><b>Medical Disclaimer:</b> {{ guidance.disclaimer }}</p>
+    <p class="note"><i>Source: {{ guidance.source }}</i></p>
 </div>
 {% endif %}
 
