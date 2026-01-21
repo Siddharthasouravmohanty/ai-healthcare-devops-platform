@@ -2,12 +2,13 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "siddhu7978/ai-healthcare-devops-platform"
-        IMAGE_TAG  = "v1"
+        IMAGE_NAME     = "siddhu7978/ai-healthcare-devops-platform"
+        IMAGE_TAG      = "v1"
         CONTAINER_NAME = "ai-healthcare-app"
     }
 
     stages {
+
         stage('Checkout Code') {
             steps {
                 git branch: 'main',
@@ -38,20 +39,27 @@ pipeline {
 
         stage('Deploy to EC2') {
             steps {
-                sh '''
-                echo "Stopping old container if it exists..."
-                docker stop $CONTAINER_NAME || true
-                docker rm $CONTAINER_NAME || true
+                withCredentials([string(
+                    credentialsId: 'openai-api-key',
+                    variable: 'OPENAI_KEY'
+                )]) {
+                    sh '''
+                    echo "Stopping old container if it exists..."
+                    docker stop $CONTAINER_NAME || true
+                    docker rm $CONTAINER_NAME || true
 
-                echo "Pulling latest image..."
-                docker pull $IMAGE_NAME:$IMAGE_TAG
+                    echo "Pulling latest image..."
+                    docker pull $IMAGE_NAME:$IMAGE_TAG
 
-                echo "Starting new container..."
-                docker run -d \
-                  --name $CONTAINER_NAME \
-                  -p 80:5000 \
-                  $IMAGE_NAME:$IMAGE_TAG
-                '''
+                    echo "Starting new container..."
+                    docker run -d \
+                      --restart unless-stopped \
+                      --name $CONTAINER_NAME \
+                      -p 80:5000 \
+                      -e OPENAI_API_KEY=$OPENAI_KEY \
+                      $IMAGE_NAME:$IMAGE_TAG
+                    '''
+                }
             }
         }
     }
