@@ -35,6 +35,14 @@
         </div>
     {% endfor %}
 
+    <!-- AI SECTION STARTS HERE -->
+    {% if guidance.ai_explanation %}
+    <hr>
+    <h4>AI Health Assistant Explanation</h4>
+    <p>{{ guidance.ai_explanation }}</p>
+    {% endif %}
+    <!-- AI SECTION ENDS HERE -->
+
     <p class="note"><b>Important Care Note:</b> {{ guidance.care_note }}</p>
 
     <hr>
