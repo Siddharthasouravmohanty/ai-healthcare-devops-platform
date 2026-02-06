@@ -52,7 +52,7 @@ pipeline {
         stage('Deploy to EC2') {
             steps {
                 withCredentials([string(
-                    credentialsId: 'OPENAI_API_KEY',
+                   credentialsId: 'openai-api-key',
                     variable: 'OPENAI_KEY'
                 )]) {
                     sh """
