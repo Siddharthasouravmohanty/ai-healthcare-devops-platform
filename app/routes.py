@@ -29,3 +29,8 @@ def index():
             }
 
     return render_template("index.html", guidance=guidance)
+
+
+@web_routes.route("/health", methods=["GET"])
+def health():
+    return {"status": "ok"}, 200
