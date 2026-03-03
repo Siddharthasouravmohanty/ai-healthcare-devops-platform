@@ -33,4 +33,4 @@ def index():
 
 @web_routes.route("/health", methods=["GET"])
 def health():
-    return {"status": "Failed "}, 500
+    return {"status": "ok"}, 200
