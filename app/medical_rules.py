@@ -8,7 +8,7 @@ DISCLAIMER = (
 SYMPTOM_RULES = {
     "fever": {
         "medicine": "Paracetamol",
-        "timing": "before food",
+        "timing": "after food",
         "advice": "Drink plenty of water and take proper rest."
     },
     "cold": {
